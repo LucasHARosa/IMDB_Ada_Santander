@@ -37,6 +37,17 @@ public class Ator extends Person {
             ;
     }
 
+    public String infoBasica(){
+        return
+            "_____________________________\n"+
+            "Nome: "+getNome() +
+            ", Sexo: " + getSexo()  +
+            ", Anos De Carreira: " + getAnosDeCarreira() +
+            ", Cache: R$"+cache+
+            ", Prestigio (0-10): " + getPrestigio() + "\n"
+            ;
+    }
+
 
 
 }

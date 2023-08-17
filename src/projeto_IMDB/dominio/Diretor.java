@@ -31,4 +31,15 @@ public class Diretor  extends Person{
             listaFilmes()
             ;
     }
+
+    public String infoBasica(){
+        return
+            "_____________________________\n"+
+            "Nome: "+getNome() +
+            ", Sexo: " + getSexo()  +
+            ", Anos De Carreira: " + getAnosDeCarreira() +
+            ", Especialidade: "+especialidade+
+            ", Prestigio (0-10): " + getPrestigio() + "\n"
+            ;
+    }
 }

@@ -1,5 +1,7 @@
 package projeto_IMDB.dominio;
 
+import java.util.List;
+
 public class Filme extends AudioVisual {
     private static long contadorFilme = 0;
     private long id;
@@ -9,6 +11,9 @@ public class Filme extends AudioVisual {
     private double notaIMDB;
     // TODO quanto mais tempo de produção melhor a nota do filme
     private double tempoProducao;
+    // Ligação para pegar dados das tabelas Diretor e Ator
+    private List<Ator> atores;
+    private Diretor diretor;
 
     public Filme(
             String nome,
@@ -56,6 +61,8 @@ public class Filme extends AudioVisual {
     public void setTempoProducao(double tempoProducao) {
         this.tempoProducao = tempoProducao;
     }
+
+
 
     // TODO media dos prestigios dos atores e diretor
     @Override

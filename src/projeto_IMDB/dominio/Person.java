@@ -3,6 +3,7 @@ package projeto_IMDB.dominio;
 import java.util.ArrayList;
 
 public class Person {
+    private static long id = 0;
     private String nome;
     private String sexo;
     private int anosDeCarreira;
@@ -10,11 +11,16 @@ public class Person {
     private ArrayList<Filme> filmes;
 
     public Person(String nome, String sexo, int anosDeCarreira, double prestigio) {
+        this.id = ++id;
         this.nome = nome;
         this.sexo = sexo;
         this.anosDeCarreira = anosDeCarreira;
         this.prestigio = prestigio;
         this.filmes = new ArrayList<>();
+    }
+
+    public static long getId() {
+        return id;
     }
 
     public String getNome() {

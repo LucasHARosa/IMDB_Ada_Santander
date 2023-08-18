@@ -1,12 +1,37 @@
+import projeto_IMDB.controller.Entrada;
+import projeto_IMDB.controller.MenuController;
 import projeto_IMDB.dominio.Ator;
 import projeto_IMDB.dominio.Diretor;
 import projeto_IMDB.dominio.Filme;
+import projeto_IMDB.repository.AtorRepository;
+import projeto_IMDB.repository.FilmeRepository;
+import projeto_IMDB.service.AtorService;
+import projeto_IMDB.service.FilmeService;
+import projeto_IMDB.utils.InputHandler;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
+    private MenuController menuController;
     public static void main(String[] args) {
+        FilmeRepository filmeRepository = new FilmeRepository();
+        AtorRepository atorRepository = new AtorRepository();
+        FilmeService filmeService = new FilmeService(filmeRepository);
+        AtorService atorService = new AtorService(atorRepository);
+        MenuController menuController = new MenuController(filmeService, atorService);
+
+        System.out.println("BEM VINDO AO IMDB DO GRUPO 5");
+        int opcao;
+
+        do {
+            menuController.menu();
+            opcao = InputHandler.getIntInput("Qual a opção desejada? ");
+            menuController.operacaoARealizar(opcao);
+        } while (opcao != 0);
+    }
+
+    public void teste(){
         //Teste, desconsiderar
         System.out.println("Hello world!");
         Filme filme01 = new Filme(

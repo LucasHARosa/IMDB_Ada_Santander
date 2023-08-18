@@ -1,6 +1,7 @@
 package projeto_IMDB.service;
 
 import projeto_IMDB.dominio.Ator;
+import projeto_IMDB.dominio.Filme;
 import projeto_IMDB.repository.AtorRepository;
 
 import java.util.List;
@@ -37,4 +38,8 @@ public class AtorService {
         }
         return false;
     }
+
+    /*public List<Filme> listarFilmesDoAtor(Ator ator){
+        return
+    }*/
 }

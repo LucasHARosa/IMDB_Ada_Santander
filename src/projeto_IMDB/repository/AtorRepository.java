@@ -1,6 +1,7 @@
 package projeto_IMDB.repository;
 
 import projeto_IMDB.dominio.Ator;
+import projeto_IMDB.dominio.Filme;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,4 +41,8 @@ public class AtorRepository {
         return atoresBanco;
     }
 
+    /*public List<Filme> listarFilmesDoAtor(Ator ator){
+        ator.getFilmes()
+        return null;
+    }*/
 }

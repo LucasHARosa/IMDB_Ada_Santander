@@ -5,18 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6b2829ef-4e48-4db2-9a78-9b1010741b8f" name="Changes" comment="dominio ator e diretor e estruturação">
-      <change afterPath="$PROJECT_DIR$/src/projeto_IMDB/controller/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/projeto_IMDB/repository/AtorRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/projeto_IMDB/repository/FilmeRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/projeto_IMDB/service/AtorService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/projeto_IMDB/service/FilmeService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/projeto_IMDB/utils/InputHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projeto_IMDB/controller/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projeto_IMDB/dominio/Ator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projeto_IMDB/dominio/Ator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projeto_IMDB/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projeto_IMDB/controller/MenuController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/projeto_IMDB/dominio/Filme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projeto_IMDB/dominio/Filme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/projeto_IMDB/dominio/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projeto_IMDB/dominio/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projeto_IMDB/repository/FilmeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projeto_IMDB/repository/FilmeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/projeto_IMDB/service/FilmeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/projeto_IMDB/service/FilmeService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

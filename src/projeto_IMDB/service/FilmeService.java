@@ -1,13 +1,26 @@
 package projeto_IMDB.service;
 
+import projeto_IMDB.dominio.Ator;
+import projeto_IMDB.dominio.Diretor;
 import projeto_IMDB.dominio.Filme;
 import projeto_IMDB.repository.FilmeRepository;
+
+import java.util.List;
 
 public class FilmeService {
     private FilmeRepository filmeRepository;
 
     public FilmeService(FilmeRepository filmeRepository){
         this.filmeRepository = filmeRepository;
+    }
+
+    public void adicionarAtor(Filme filme, Ator ator){
+        filme.adicionarAtor(ator);
+        filme.calcularNotaElenco();
+    }
+
+    public void adicionarDiretor(Filme filme, Diretor diretor){
+        filme.adicionarDiretor(diretor);
     }
 
     public void cadastrarFilme(Filme filme){
@@ -18,8 +31,16 @@ public class FilmeService {
         }
     }
 
+    public List<Filme> listarFilmes(){
+        return filmeRepository.listarFilmes();
+    }
+
     public Filme buscarFilme(String nome){
         return filmeRepository.buscarFilme(nome);
+    }
+
+    public Filme buscarFilmeId(long id){
+        return filmeRepository.buscarFilmeId(id);
     }
 
     public boolean validarData(String dataLancamento){

@@ -16,15 +16,34 @@ public class FilmeRepository {
         this.filmeBanco.add(filme);
     }
 
-    private List<Filme> listarFilmes(){
+    public List<Filme> listarFilmes(){
         return filmeBanco;
     }
 
-    private void deletarFilme(){}
+    public void deletarFilme(long id){
+        Filme filme = buscarFilmeId(id);
+
+        if (filme != null) {
+            filmeBanco.remove(filme);
+            System.out.println("Filme removido com sucesso!");
+        } else {
+            System.out.println("Filme não encontrado, a remoção não pôde ser concluída!");
+        }
+    }
+
+    public Filme buscarFilmeId(long id) {
+        for (Filme filme : filmeBanco){
+            if (filme.getId() == id){
+                return filme;
+            }
+        }
+
+        return null;
+    }
 
     public Filme buscarFilme(String nome) {
         for (Filme filme : filmeBanco){
-            if (filme.getNome().equals(nome)){
+            if (filme.getNome().equalsIgnoreCase(nome)){
                 return filme;
             }
         }

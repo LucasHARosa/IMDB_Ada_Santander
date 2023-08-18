@@ -39,7 +39,23 @@ public class AtorService {
         return false;
     }
 
-    /*public List<Filme> listarFilmesDoAtor(Ator ator){
-        return
-    }*/
+    public void adicionarFilmeAoAtor(Ator ator, Filme filme, FilmeService filmeService){
+        boolean adicionar = false;
+        for (Filme filmeLista: filmeService.listarFilmes()) {
+            for (Ator atorLista : filmeLista.getAtores()){
+                if (ator.equals(atorLista)){
+                    adicionar = false;
+                } else {
+                    adicionar = true;
+                }
+            }
+        }
+        if (adicionar){
+            atorRepository.adicionarFilmeAoAtor(ator, filme);
+        }
+    }
+
+    public List<Filme> listarFilmesDoAtor(long atorId){
+        return buscarAtorId(atorId).getFilmes();
+    }
 }

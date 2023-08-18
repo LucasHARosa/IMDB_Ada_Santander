@@ -4,8 +4,10 @@ import projeto_IMDB.dominio.Ator;
 import projeto_IMDB.dominio.Diretor;
 import projeto_IMDB.dominio.Filme;
 import projeto_IMDB.repository.AtorRepository;
+import projeto_IMDB.repository.DiretorRepository;
 import projeto_IMDB.repository.FilmeRepository;
 import projeto_IMDB.service.AtorService;
+import projeto_IMDB.service.DiretorService;
 import projeto_IMDB.service.FilmeService;
 import projeto_IMDB.utils.InputHandler;
 
@@ -17,9 +19,13 @@ public class Main {
     public static void main(String[] args) {
         FilmeRepository filmeRepository = new FilmeRepository();
         AtorRepository atorRepository = new AtorRepository();
+        DiretorRepository diretorRepository = new DiretorRepository();
+
         FilmeService filmeService = new FilmeService(filmeRepository);
         AtorService atorService = new AtorService(atorRepository);
-        MenuController menuController = new MenuController(filmeService, atorService);
+        DiretorService diretorService = new DiretorService(diretorRepository);
+
+        MenuController menuController = new MenuController(filmeService, atorService, diretorService);
 
         System.out.println("BEM VINDO AO IMDB DO GRUPO 5");
         int opcao;
@@ -39,7 +45,7 @@ public class Main {
                 "15/02/1971",
                 79000,
                 "Primeiro filme da trilogia.",
-                3
+                3, new ArrayList<>(), new ArrayList<>()
         );
         System.out.println(filme01);
         Filme filme02 = new Filme(
@@ -47,7 +53,7 @@ public class Main {
                 "29/05/1973",
                 85600,
                 "Segundo filme da trilogia.",
-                2
+                2, new ArrayList<>(), new ArrayList<>()
         );
         Ator ator01 = new Ator("jeorge","masculino",12,10,1500);
         ator01.addFilme(filme01);

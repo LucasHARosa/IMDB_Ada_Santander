@@ -41,8 +41,8 @@ public class AtorRepository {
         return atoresBanco;
     }
 
-    /*public List<Filme> listarFilmesDoAtor(Ator ator){
-        ator.getFilmes()
-        return null;
-    }*/
+    public void adicionarFilmeAoAtor(Ator ator,Filme filme){
+        ator.getFilmes().add(filme);
+        filme.adicionarAtor(ator);
+    }
 }

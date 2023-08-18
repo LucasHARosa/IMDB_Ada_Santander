@@ -1,9 +1,12 @@
 package projeto_IMDB.controller;
 
+import projeto_IMDB.controller.views.AtorView;
+import projeto_IMDB.controller.views.DiretorView;
 import projeto_IMDB.dominio.Ator;
 import projeto_IMDB.dominio.Diretor;
 import projeto_IMDB.dominio.Filme;
 import projeto_IMDB.service.AtorService;
+import projeto_IMDB.service.DiretorService;
 import projeto_IMDB.service.FilmeService;
 import projeto_IMDB.utils.InputHandler;
 
@@ -14,10 +17,12 @@ public class MenuController {
 
     private FilmeService filmeService;
     private AtorService atorService;
+    private DiretorService diretorService;
 
-    public MenuController(FilmeService filmeService, AtorService atorService){
+    public MenuController(FilmeService filmeService, AtorService atorService, DiretorService diretorService){
         this.filmeService = filmeService;
         this.atorService = atorService;
+        this.diretorService = diretorService;
     }
 
     public void menu(){
@@ -29,9 +34,9 @@ public class MenuController {
                             "4) Listar Filmes\n" +
                             "5) Listar Atores\n" +
                             "6) Listar Diretores\n" +
-                            "7) Adicionar um filme ao ator\n" +
-                            "8) Adicionar um ator ao filme\n" +
-                            "9) Adicionar um diretor ao filme\n" +
+                            "7) Adicionar um ator ao filme\n" +
+                            "8) Adicionar um filme ao ator\n" +
+                            "9) Adicionar um filme ao diretor\n" +
                            "10) Pesquisar filme pelo nome\n" +
                             "0) Encerrar aplicativo");
         System.out.println("____________________________________");
@@ -44,26 +49,27 @@ public class MenuController {
                 cadastrarFilmes();
                 break;
             case 2:
-
+                AtorView.cadastrarAtor(atorService);
                 break;
             case 3:
-
+                DiretorView.cadastrarDiretor(diretorService);
                 break;
             case 4:
                 listarFilmes();
                 break;
             case 5:
-
+                AtorView.listarAtores(atorService);
                 break;
             case 6:
-
+                DiretorView.listarDiretores(diretorService);
                 break;
 
             case 7:
 
                 break;
             case 8:
-                adicionarAtorEmFilme();
+                //adicionarAtorEmFilme();
+                AtorView.adicionarFilmeAoAtor(atorService, filmeService);
                 break;
             case 9:
                 adicionarDiretorEmFilme();
@@ -162,7 +168,7 @@ public class MenuController {
         int filmeId = InputHandler.getIntInput("Digite o código do filme: ");
         Filme filme = filmeService.buscarFilmeId(filmeId);
         int diretorId = InputHandler.getIntInput("Digite o código do diretor: \n");
-        Diretor diretor = atorService.buscarDiretorId(diretorId);
+        Diretor diretor = diretorService.buscarDiretorId(diretorId);
         if (diretor != null && filme != null) {
             filmeService.adicionarDiretor(filme, diretor);
         } else {

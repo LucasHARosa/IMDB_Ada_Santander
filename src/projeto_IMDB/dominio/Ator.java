@@ -14,8 +14,6 @@ public class Ator extends Person {
         return cache;
     }
 
-
-
     private String listaFilmes(){
         String listaDeFilmes = "Lista de filmes que participou:\n";
         for(Filme filme : getFilmes()){

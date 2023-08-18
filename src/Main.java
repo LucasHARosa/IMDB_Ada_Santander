@@ -51,7 +51,9 @@ public class Main {
         filme02.setAtores(listaAtoresFilme02);
 
         filme02.setDiretor(diretor01);
-
+        // TODO resolver: Exception in thread "main" java.lang.StackOverflowError
+        // Esse último println está dando esse erro que parece ser por causa de recursividade.
+        // Acredito que teria que mexer nas estidades Ator e Filme para guardarem apenas os IDs.
         System.out.println(filme02);
     }
 }

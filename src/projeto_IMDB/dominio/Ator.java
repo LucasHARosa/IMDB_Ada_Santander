@@ -3,8 +3,6 @@ package projeto_IMDB.dominio;
 public class Ator extends Person {
     private double cache;
 
-
-
     public Ator(String nome, String sexo, int anosDeCarreira, double prestigio, double cache) {
         super(nome, sexo, anosDeCarreira, prestigio);
         this.cache = cache;

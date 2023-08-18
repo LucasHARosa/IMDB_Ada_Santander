@@ -1,5 +1,6 @@
 package projeto_IMDB.dominio;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Filme extends AudioVisual {
@@ -12,10 +13,33 @@ public class Filme extends AudioVisual {
     // TODO quanto mais tempo de produção melhor a nota do filme
     private double tempoProducao;
     // Ligação para pegar dados das tabelas Diretor e Ator
-    private List<Ator> atores;
-    private Diretor diretor;
+    private List<Ator> atores = new ArrayList<>();
+    private List<Diretor> diretores = new ArrayList<>();
 
     public Filme(
+            String nome,
+            String dataLancamento,
+            double orcamento,
+            String descricao,
+            double tempoProducao,
+            List<Ator> atores,
+            List<Diretor> diretores
+    ) {
+        super(
+                nome,
+                dataLancamento,
+                orcamento,
+                descricao
+        );
+        this.id = ++contadorFilme;
+        this.notaElenco = calcularNotaElenco();
+        this.notaIMDB = calcularNotaImdb();
+        this.tempoProducao = tempoProducao;
+        this.atores = atores;
+        this.diretores = diretores;
+    }
+
+    /*public Filme(
             String nome,
             String dataLancamento,
             double orcamento,
@@ -32,41 +56,19 @@ public class Filme extends AudioVisual {
         this.tempoProducao = tempoProducao;
         this.notaElenco = calcularNotaElenco();
         this.notaIMDB = calcularNotaImdb();
+    }*/
+
+    public void adicionarAtor(Ator ator) {
+        atores.add(ator);
+        calcularNotaElenco();
     }
-
-    public long getId() {
-        return id;
+    public void adicionarDiretor(Diretor diretor) {
+        diretores.add(diretor);
     }
-
-    public double getNotaElenco() {
-        return notaElenco;
-    }
-
-    public void setNotaElenco(double notaElenco) {
-        this.notaElenco = notaElenco;
-    }
-
-    public double getNotaIMDB() {
-        return notaIMDB;
-    }
-
-    public void setNotaIMDB(double notaIMDB) {
-        this.notaIMDB = notaIMDB;
-    }
-
-    public double getTempoProducao() {
-        return tempoProducao;
-    }
-
-    public void setTempoProducao(double tempoProducao) {
-        this.tempoProducao = tempoProducao;
-    }
-
-
 
     // TODO media dos prestigios dos atores e diretor
     @Override
-    protected double calcularNotaElenco() {
+    public double calcularNotaElenco() {
         double nota;
         double soma = 0.0;
 
@@ -117,5 +119,33 @@ public class Filme extends AudioVisual {
                 ", notaElenco = " + getNotaElenco() +
                 ", notaIMDB = " + getNotaIMDB() +
                 " }";
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public double getNotaElenco() {
+        return notaElenco;
+    }
+
+    public void setNotaElenco(double notaElenco) {
+        this.notaElenco = notaElenco;
+    }
+
+    public double getNotaIMDB() {
+        return notaIMDB;
+    }
+
+    public void setNotaIMDB(double notaIMDB) {
+        this.notaIMDB = notaIMDB;
+    }
+
+    public double getTempoProducao() {
+        return tempoProducao;
+    }
+
+    public void setTempoProducao(double tempoProducao) {
+        this.tempoProducao = tempoProducao;
     }
 }

@@ -46,20 +46,12 @@ public class Main {
 
         List<Ator> listaAtoresFilme02 = new ArrayList<>();
         listaAtoresFilme02.add(ator01);
-        System.out.println(" --- 00 --- ");
         listaAtoresFilme02.add(ator02);
-        System.out.println(" --- 01 --- ");
-        filme02.setAtores(listaAtoresFilme02);
-        System.out.println(" --- 02 --- ");
-        filme02.setDiretor(diretor01);
-        System.out.println(" --- 03 --- ");
-        try {
-            System.out.println(filme02);
-        } catch (Exception e) {
-            System.out.println("erro = " + e);
-            e.printStackTrace();
-        }
 
-        System.out.println(" --- 04 --- ");
+        filme02.setAtores(listaAtoresFilme02);
+
+        filme02.setDiretor(diretor01);
+
+        System.out.println(filme02);
     }
 }

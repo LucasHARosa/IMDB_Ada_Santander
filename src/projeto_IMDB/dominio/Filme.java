@@ -1,14 +1,5 @@
 package projeto_IMDB.dominio;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-// import static projeto_IMDB.utils.Formatadores.converteStringParaDate;
-// import static projeto_IMDB.utils.Formatadores.converterDateParaString;
-
 public class Filme extends AudioVisual {
     private static long contadorFilme = 0;
     private long id;
@@ -18,27 +9,9 @@ public class Filme extends AudioVisual {
     private double notaIMDB;
     // TODO quanto mais tempo de produção melhor a nota do filme
     private double tempoProducao;
-    // private SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-
-    /*private Date converteStringParaDate(String dataInformada){
-        Date dataFormatada = null;
-
-        try {
-            dataFormatada = formatoData.parse(dataInformada);
-        } catch (ParseException e) {
-            System.out.println(e);
-        }
-
-        return dataFormatada;
-    }*/
-
-    /*private String converterDateParaString(Date dataInformada) {
-        return formatoData.format(dataInformada);
-    }*/
 
     public Filme(
             String nome,
-            // Date dataLancamento,
             String dataLancamento,
             double orcamento,
             String descricao,
@@ -46,7 +19,6 @@ public class Filme extends AudioVisual {
     ) {
         super(
                 nome,
-                // converteStringParaDate(dataLancamento),
                 dataLancamento,
                 orcamento,
                 descricao
@@ -113,7 +85,7 @@ public class Filme extends AudioVisual {
         return notaElenco * contribuicaoTempoProducao;
     }
 
-    private double calcularContribuicaoTempoProducao(double tempoDeProducao) {
+    private double calcularContribuicaoTempoProducao(double tempoDeProducao){
         if (tempoDeProducao >= 12) {
             return 1.75;
         } else if (tempoDeProducao >= 10) {
@@ -125,14 +97,12 @@ public class Filme extends AudioVisual {
         return 1.10;
     }
 
-    // arrumar isso para listar todas as informações
     @Override
     public String toString() {
         return "_____________________________\n"+
                 "Filme { " +
                 "id = " + getId() +
                 ", nome = '" + getNome() + '\'' +
-                // ", dataLancamento = " + converterDateParaString(getDataLancamento()) +
                 ", dataLancamento = " + getDataLancamento() +
                 ", atores = " + getAtores() +
                 ", diretor = " + getDiretor() +

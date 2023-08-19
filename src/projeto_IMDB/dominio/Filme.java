@@ -12,8 +12,6 @@ public class Filme extends AudioVisual {
     private double notaIMDB;
     // TODO quanto mais tempo de produção melhor a nota do filme
     private double tempoProducao;
-    // Ligação para pegar dados das tabelas Diretor e Ator
-    private List<Ator> atores = new ArrayList<>();
     private List<Diretor> diretores = new ArrayList<>();
 
     public Filme(
@@ -22,7 +20,6 @@ public class Filme extends AudioVisual {
             double orcamento,
             String descricao,
             double tempoProducao,
-            List<Ator> atores,
             List<Diretor> diretores
     ) {
         super(
@@ -35,7 +32,6 @@ public class Filme extends AudioVisual {
         this.notaElenco = calcularNotaElenco();
         this.notaIMDB = calcularNotaImdb();
         this.tempoProducao = tempoProducao;
-        this.atores = atores;
         this.diretores = diretores;
     }
 
@@ -59,8 +55,8 @@ public class Filme extends AudioVisual {
     }*/
 
     public void adicionarAtor(Ator ator) {
-        atores.add(ator);
-        calcularNotaElenco();
+        getAtores().add(ator);
+//        calcularNotaElenco();
     }
     public void adicionarDiretor(Diretor diretor) {
         diretores.add(diretor);
@@ -108,12 +104,16 @@ public class Filme extends AudioVisual {
 
     @Override
     public String toString() {
+        List<String> nomesAtores = new ArrayList<>();
+        for (Ator ator:getAtores()) {
+            nomesAtores.add(ator.getNome());
+        }
         return "_____________________________\n"+
                 "Filme { " +
                 "id = " + getId() +
                 ", nome = '" + getNome() + '\'' +
                 ", dataLancamento = " + getDataLancamento() +
-                ", atores = " + getAtores() +
+                ", atores = " + nomesAtores +
                 ", diretor = " + getDiretor() +
                 ", tempoProducao = " + getTempoProducao() +
                 ", notaElenco = " + getNotaElenco() +

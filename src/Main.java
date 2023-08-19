@@ -45,7 +45,7 @@ public class Main {
                 "15/02/1971",
                 79000,
                 "Primeiro filme da trilogia.",
-                3, new ArrayList<>(), new ArrayList<>()
+                3, new ArrayList<>()
         );
         System.out.println(filme01);
         Filme filme02 = new Filme(
@@ -53,7 +53,7 @@ public class Main {
                 "29/05/1973",
                 85600,
                 "Segundo filme da trilogia.",
-                2, new ArrayList<>(), new ArrayList<>()
+                2, new ArrayList<>()
         );
         Ator ator01 = new Ator("jeorge","masculino",12,10,1500);
         ator01.addFilme(filme01);

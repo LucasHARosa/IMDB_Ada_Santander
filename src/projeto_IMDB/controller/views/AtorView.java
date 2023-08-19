@@ -42,16 +42,19 @@ public class AtorView {
     public static void adicionarFilmeAoAtor(AtorService atorService, FilmeService filmeService){
         System.out.println("---- Associação de Atores e Filmes ----");
         System.out.println("Lista de filmes: ");
-        for (int i = 1; i < filmeService.listarFilmes().size(); i++) {
+        /*for (int i = 0; i < filmeService.listarFilmes().size(); i++) {
             String nome = filmeService.buscarFilmeId(i).getNome();
             System.out.println(i + ") " + nome);
+        }*/
+        for (Filme filme:filmeService.listarFilmes()) {
+            System.out.println(filme.getId() + ") " + filme.getNome());
         }
         System.out.println("Escolha o filme: ");
         int filmeId = Entrada.getInt();
 
         System.out.println("Lista de atores: ");
-        for (int i = 1; i < atorService.listarAtores().size(); i++) {
-            System.out.println(i + ") " + atorService.buscarAtorId(i).getNome());
+        for (Ator ator:atorService.listarAtores()) {
+            System.out.println(ator.getId() + ") " + ator.getNome());
         }
         System.out.println("Escolha o ator: ");
         int atorId = Entrada.getInt();

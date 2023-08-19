@@ -29,8 +29,9 @@ public class AtorRepository {
     }
 
     public boolean deletarAtor(long id){
-        if(atoresBanco.get((int)id) != null){
-            atoresBanco.remove(buscarAtorId(id));
+        Ator ator = buscarAtorId(id);
+        if(!ator.equals(null)){
+            atoresBanco.remove(ator);
             return true;
         }
 
@@ -42,7 +43,7 @@ public class AtorRepository {
     }
 
     public void adicionarFilmeAoAtor(Ator ator,Filme filme){
-        ator.getFilmes().add(filme);
+        ator.addFilme(filme);
         filme.adicionarAtor(ator);
     }
 }

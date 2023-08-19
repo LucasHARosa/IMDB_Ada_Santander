@@ -132,7 +132,7 @@ public class MenuController {
         String descricao = InputHandler.getStringInput("Digite a descrição de " + nome + ": ");
 
 
-        Filme filme = new Filme(nome, data, orcamento, descricao, tempoProducao, atoresFilme, diretoresFilme);
+        Filme filme = new Filme(nome, data, orcamento, descricao, tempoProducao, diretoresFilme);
         filmeService.cadastrarFilme(filme);
         if (filmeService.buscarFilme(nome) != null) {
             System.out.println("Cadastro realizado com sucesso!");

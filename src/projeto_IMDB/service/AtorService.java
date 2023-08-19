@@ -40,13 +40,12 @@ public class AtorService {
     }
 
     public void adicionarFilmeAoAtor(Ator ator, Filme filme, FilmeService filmeService){
-        boolean adicionar = false;
+        boolean adicionar = true;
         for (Filme filmeLista: filmeService.listarFilmes()) {
             for (Ator atorLista : filmeLista.getAtores()){
                 if (ator.equals(atorLista)){
                     adicionar = false;
-                } else {
-                    adicionar = true;
+                    break;
                 }
             }
         }

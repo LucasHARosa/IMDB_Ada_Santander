@@ -100,14 +100,22 @@ public class Filme extends AudioVisual {
         for (Diretor diretor : getDiretores()) {
             nomesDiretores.add(diretor.getNome());
         }
-        return "_____________________________\n"+
+        StringBuilder result = new StringBuilder("_____________________________\n" +
                 "Nome: " + getNome() +
                 "\nData de lançamento: " + getDataLancamento() +
-                "\nAtores: " + nomesAtores +
-                "\nDiretores: " + nomesDiretores  +
-                "\nTempo de produção: " + getTempoProducao() +
-                "\nNota do elenco: " + getNotaElenco() +
-                "\nNota IMDB: " + getNotaIMDB();
+                "\nTempo de produção: " + getTempoProducao());
+
+        if (!nomesDiretores.isEmpty()) {
+            result.append("\nDiretores: ").append(nomesDiretores);
+        }
+        if (!nomesAtores.isEmpty()) {
+            result.append("\nAtores: ").append(nomesAtores).append("\nNota do elenco: ").append(getNotaElenco());
+        }
+        if (!nomesDiretores.isEmpty()) {
+            result.append("\nNota IMDB: ").append(getNotaIMDB());
+        }
+
+        return result.toString();
     }
 
     public long getId() {

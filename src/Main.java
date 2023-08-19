@@ -1,5 +1,6 @@
 import projeto_IMDB.controller.Entrada;
 import projeto_IMDB.controller.MenuController;
+import projeto_IMDB.controller.views.FilmeView;
 import projeto_IMDB.dominio.Ator;
 import projeto_IMDB.dominio.Diretor;
 import projeto_IMDB.dominio.Filme;
@@ -31,13 +32,15 @@ public class Main {
         int opcao;
 
         do {
+            System.out.println("");
             menuController.menu();
             opcao = InputHandler.getIntInput("Qual a opção desejada? ");
+            System.out.println("");
             menuController.operacaoARealizar(opcao);
         } while (opcao != 0);
     }
 
-    public void teste(){
+    /*public void teste(){
         //Teste, desconsiderar
         System.out.println("Hello world!");
         Filme filme01 = new Filme(
@@ -86,5 +89,5 @@ public class Main {
         // Esse último println está dando esse erro que parece ser por causa de recursividade.
         // Acredito que teria que mexer nas estidades Ator e Filme para guardarem apenas os IDs.
         System.out.println(filme02);
-    }
+    }*/
 }

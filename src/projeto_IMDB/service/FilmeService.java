@@ -43,7 +43,15 @@ public class FilmeService {
         return filmeRepository.buscarFilmeId(id);
     }
 
+    public boolean buscarAtor(Ator ator, Filme filme){
+        return filmeRepository.buscarAtor(ator, filme);
+    }
+
     public boolean validarData(String dataLancamento){
+        if (dataLancamento.length() < 8 || dataLancamento.length() > 10) {
+            return false;
+        }
+
         String parteNumerica = dataLancamento.replaceAll("[^0-9]", "");
 
         int dia = Integer.parseInt(parteNumerica.substring(0, 2));

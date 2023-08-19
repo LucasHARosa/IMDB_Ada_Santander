@@ -12,6 +12,7 @@ public class Filme extends AudioVisual {
     private double notaIMDB;
     // TODO quanto mais tempo de produção melhor a nota do filme
     private double tempoProducao;
+    private List<Ator> atores = new ArrayList<>();
     private List<Diretor> diretores = new ArrayList<>();
 
     public Filme(
@@ -20,6 +21,7 @@ public class Filme extends AudioVisual {
             double orcamento,
             String descricao,
             double tempoProducao,
+            List<Ator> atores,
             List<Diretor> diretores
     ) {
         super(
@@ -32,34 +34,17 @@ public class Filme extends AudioVisual {
         this.notaElenco = calcularNotaElenco();
         this.notaIMDB = calcularNotaImdb();
         this.tempoProducao = tempoProducao;
+        this.atores = atores;
         this.diretores = diretores;
     }
 
-    /*public Filme(
-            String nome,
-            String dataLancamento,
-            double orcamento,
-            String descricao,
-            double tempoProducao
-    ) {
-        super(
-                nome,
-                dataLancamento,
-                orcamento,
-                descricao
-        );
-        this.id = ++contadorFilme;
-        this.tempoProducao = tempoProducao;
-        this.notaElenco = calcularNotaElenco();
-        this.notaIMDB = calcularNotaImdb();
-    }*/
-
     public void adicionarAtor(Ator ator) {
         getAtores().add(ator);
-//        calcularNotaElenco();
+        calcularNotaElenco();
     }
     public void adicionarDiretor(Diretor diretor) {
-        diretores.add(diretor);
+        getDiretores().add(diretor);
+        calcularNotaElenco();
     }
 
     // TODO media dos prestigios dos atores e diretor
@@ -74,11 +59,13 @@ public class Filme extends AudioVisual {
             }
         }
 
-        if (getDiretor() != null) {
-            soma += getDiretor().getPrestigio();
+        if (!getDiretores().isEmpty()) {
+            for (Diretor diretor : getDiretores() ) {
+                soma += diretor.getPrestigio();
+            }
         }
 
-        nota = soma / (getAtores().size() + 1);
+        nota = soma / (getAtores().size() + getDiretores().size());
 
         return nota;
     }
@@ -105,20 +92,22 @@ public class Filme extends AudioVisual {
     @Override
     public String toString() {
         List<String> nomesAtores = new ArrayList<>();
-        for (Ator ator:getAtores()) {
+        for (Ator ator : getAtores()) {
             nomesAtores.add(ator.getNome());
         }
+
+        List<String> nomesDiretores = new ArrayList<>();
+        for (Diretor diretor : getDiretores()) {
+            nomesDiretores.add(diretor.getNome());
+        }
         return "_____________________________\n"+
-                "Filme { " +
-                "id = " + getId() +
-                ", nome = '" + getNome() + '\'' +
-                ", dataLancamento = " + getDataLancamento() +
-                ", atores = " + nomesAtores +
-                ", diretor = " + getDiretor() +
-                ", tempoProducao = " + getTempoProducao() +
-                ", notaElenco = " + getNotaElenco() +
-                ", notaIMDB = " + getNotaIMDB() +
-                " }";
+                "Nome: " + getNome() +
+                "\nData de lançamento: " + getDataLancamento() +
+                "\nAtores: " + nomesAtores +
+                "\nDiretores: " + nomesDiretores  +
+                "\nTempo de produção: " + getTempoProducao() +
+                "\nNota do elenco: " + getNotaElenco() +
+                "\nNota IMDB: " + getNotaIMDB();
     }
 
     public long getId() {
@@ -147,5 +136,14 @@ public class Filme extends AudioVisual {
 
     public void setTempoProducao(double tempoProducao) {
         this.tempoProducao = tempoProducao;
+    }
+
+    @Override
+    public List<Ator> getAtores() {
+        return atores;
+    }
+
+    public List<Diretor> getDiretores() {
+        return diretores;
     }
 }

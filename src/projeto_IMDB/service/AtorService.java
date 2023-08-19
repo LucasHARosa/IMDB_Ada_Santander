@@ -54,7 +54,7 @@ public class AtorService {
         }
     }
 
-    public List<Filme> listarFilmesDoAtor(long atorId){
-        return buscarAtorId(atorId).getFilmes();
+    public boolean buscarFilme(Ator ator, Filme filme) {
+        return ator.getFilmes().contains(filme);
     }
 }

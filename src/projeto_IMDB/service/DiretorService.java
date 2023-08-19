@@ -40,22 +40,20 @@ public class DiretorService {
         }
     }
 
-    /*public void adicionarFilmeAoDiretor(Diretor diretor, Filme filme, FilmeService filmeService){
-        boolean adicionar = false;
+    public void adicionarFilmeAoDiretor(Diretor diretor, Filme filme, FilmeService filmeService){
+        boolean adicionar = true;
         for (Filme filmeLista: filmeService.listarFilmes()) {
                 if (diretor.equals(filmeLista.getDiretor())){
                     adicionar = false;
-                } else {
-                    adicionar = true;
+                    break;
                 }
-
         }
         if (adicionar){
-            //diretorRepository.adicionarFilmeAoAtor(ator, filme);
+            diretorRepository.adicionarFilmeAoDiretor(diretor, filme);
         }
-    }*/
+    }
 
-    public List<Filme> listarFilmesDoDiretor(long diretorId){
-        return buscarDiretorId(diretorId).getFilmes();
+    public boolean buscarFilme(Diretor diretor, Filme filme) {
+        return diretor.getFilmes().contains(filme);
     }
 }

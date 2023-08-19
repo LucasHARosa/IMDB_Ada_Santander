@@ -33,36 +33,45 @@ public class AtorView {
     }
 
     public static void listarAtores(AtorService atorService){
-        for (Ator ator:atorService.listarAtores()) {
-            System.out.println(ator);
-            System.out.println(ator.getId());
+        if (atorService.listarAtores().equals(null) || atorService.listarAtores().isEmpty()){
+            System.out.println("Nenhum ator cadastrado!");
+        } else {
+            for (Ator ator:atorService.listarAtores()) {
+                System.out.println(ator);
+            }
         }
     }
 
     public static void adicionarFilmeAoAtor(AtorService atorService, FilmeService filmeService){
-        System.out.println("---- Associação de Atores e Filmes ----");
-        System.out.println("Lista de filmes: ");
-        /*for (int i = 0; i < filmeService.listarFilmes().size(); i++) {
-            String nome = filmeService.buscarFilmeId(i).getNome();
-            System.out.println(i + ") " + nome);
-        }*/
-        for (Filme filme:filmeService.listarFilmes()) {
-            System.out.println(filme.getId() + ") " + filme.getNome());
+        if (atorService.listarAtores().isEmpty() || atorService.listarAtores().equals(null)){
+            System.out.println("Nenhum ator cadastrado!");
+        } else if (filmeService.listarFilmes().isEmpty() || filmeService.listarFilmes().equals(null)) {
+            System.out.println("Nenhum filme cadastrado!");
+        } else {
+            System.out.println("---- Associação de Atores e Filmes ----");
+            System.out.println("Lista de filmes: ");
+            for (Filme filme:filmeService.listarFilmes()) {
+                System.out.println(filme.getId() + ") " + filme.getNome());
+            }
+            System.out.println("Escolha o filme: ");
+            int filmeId = Entrada.getInt();
+
+            System.out.println("Lista de atores: ");
+            for (Ator ator:atorService.listarAtores()) {
+                System.out.println(ator.getId() + ") " + ator.getNome());
+            }
+            System.out.println("Escolha o ator: ");
+            int atorId = Entrada.getInt();
+
+            Ator ator = atorService.buscarAtorId(atorId);
+            Filme filme = filmeService.buscarFilmeId(filmeId);
+
+            if (!atorService.buscarFilme(ator, filme)) {
+                atorService.adicionarFilmeAoAtor(ator, filme, filmeService);
+                System.out.println(atorService.buscarAtorId(atorId).toString());
+            } else {
+                System.out.println("Filme já adicionado à lista do ator!");
+            }
         }
-        System.out.println("Escolha o filme: ");
-        int filmeId = Entrada.getInt();
-
-        System.out.println("Lista de atores: ");
-        for (Ator ator:atorService.listarAtores()) {
-            System.out.println(ator.getId() + ") " + ator.getNome());
-        }
-        System.out.println("Escolha o ator: ");
-        int atorId = Entrada.getInt();
-
-        atorService.adicionarFilmeAoAtor(atorService.buscarAtorId(atorId),
-                filmeService.buscarFilmeId(filmeId),
-                filmeService);
-
-        System.out.println(atorService.buscarAtorId(atorId).toString());
     }
 }

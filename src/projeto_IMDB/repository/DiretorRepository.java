@@ -43,7 +43,7 @@ public class DiretorRepository {
     }
 
     public void adicionarFilmeAoDiretor(Diretor diretor,Filme filme){
-        diretor.getFilmes().add(filme);
+        diretor.addFilme(filme);
         filme.adicionarDiretor(diretor);
     }
 }

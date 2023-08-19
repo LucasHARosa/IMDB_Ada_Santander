@@ -74,6 +74,7 @@ public class MenuController {
                 break;
             case 9:
                 //adicionarDiretorEmFilme();
+                DiretorView.adicionarFilmeAoDiretor(diretorService, filmeService);
                 break;
             case 10:
                 FilmeView.pesquisarFilmePorNome(filmeService);

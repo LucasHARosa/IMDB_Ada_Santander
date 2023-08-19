@@ -19,53 +19,61 @@ public class FilmeView {
 
         String nome = InputHandler.getStringInput("Digite o nome do filme: ");
         String data = InputHandler.getStringInput("Digite a data de lançamento de " + nome + ": ");
+
+        List<Ator> listaAtores = atorService.listarAtores();
+        List<Diretor> listaDiretores = diretorService.listarDiretores();
+
         Integer ator1, diretor1;
-        List<Ator> atoresFilme = new ArrayList();
         List<Diretor> diretoresFilme = new ArrayList();
+        List<Ator> atoresFilme = new ArrayList();
 
-        System.out.println("Lista de atores cadastrados: ");
-        for (Ator ator : atorService.listarAtores()) {
-            System.out.println(ator.getId() + ") " + ator.getNome());
+        if (!listaAtores.isEmpty()) {
+            System.out.println("Lista de atores cadastrados: ");
+            for (Ator ator : listaAtores) {
+                System.out.println(ator.getId() + ") " + ator.getNome());
+            }
+
+            System.out.println("Adição de atores ao elenco de " + nome + ": ");
+            do {
+                ator1 = InputHandler.getIntInput("Digite o código do ator: (Para finalizar, digite -1)\n");
+                if (ator1 != -1) {
+                    Ator atorLista = atorService.buscarAtorId(ator1);
+                    if (atorLista != null) {
+                        if (!atoresFilme.contains(atorLista)) {
+                            atoresFilme.add(atorLista);
+                        } else {
+                            System.out.println("Ator já adicionado ao elenco do filme!");
+                        }
+                    } else {
+                        System.out.println("Ator não encontrado no sistema!");
+                    }
+                }
+            } while (ator1 != -1);
         }
 
-        System.out.println("Adição de atores ao elenco de " + nome + ": ");
-        do {
-            ator1 = InputHandler.getIntInput("Digite o código do ator: (Para finalizar, digite -1)\n");
-            if (ator1 != -1) {
-                Ator atorLista = atorService.buscarAtorId(ator1);
-                if (atorLista != null) {
-                    if (!atoresFilme.contains(atorLista)) {
-                        atoresFilme.add(atorLista);
-                    } else {
-                        System.out.println("Ator já adicionado ao elenco do filme!");
-                    }
-                } else {
-                    System.out.println("Ator não encontrado no sistema!");
-                }
+        if (!listaDiretores.isEmpty()) {
+            System.out.println("\nLista de diretores cadastrados: ");
+            for (Diretor diretor : listaDiretores) {
+                System.out.println(diretor.getId() + ") " + diretor.getNome());
             }
-        } while (ator1 != -1);
 
-        System.out.println("\nLista de diretores cadastrados: ");
-        for (Diretor diretor : diretorService.listarDiretores()) {
-            System.out.println(diretor.getId() + ") " + diretor.getNome());
+            System.out.println("\nAdição de diretores de " + nome + ": ");
+            do {
+                diretor1 = InputHandler.getIntInput("Digite o código do diretor: (Para finalizar, digite -1)\n");
+                if (diretor1 != -1) {
+                    Diretor diretorLista = diretorService.buscarDiretorId(diretor1);
+                    if (diretorLista != null) {
+                        if (!diretoresFilme.contains(diretorLista)) {
+                            diretoresFilme.add(diretorLista);
+                        } else {
+                            System.out.println("Diretor já adicionado ao filme!");
+                        }
+                    } else {
+                        System.out.println("Diretor não encontrado no sistema!");
+                    }
+                }
+            } while (diretor1 != -1);
         }
-
-        System.out.println("\nAdição de diretores de " + nome + ": ");
-        do {
-            diretor1 = InputHandler.getIntInput("Digite o código do diretor: (Para finalizar, digite -1)\n");
-            if (diretor1 != -1) {
-                Diretor diretorLista = diretorService.buscarDiretorId(diretor1);
-                if (diretorLista != null) {
-                    if (!diretoresFilme.contains(diretorLista)) {
-                        diretoresFilme.add(diretorLista);
-                    } else {
-                        System.out.println("Diretor já adicionado ao filme!");
-                    }
-                } else {
-                    System.out.println("Diretor não encontrado no sistema!");
-                }
-            }
-        } while (diretor1 != -1);
 
         double orcamento = InputHandler.getDoubleInput("Digite o orçamento gasto para a produção de " + nome + ": ");
         int tempoProducao = InputHandler.getIntInput("Digite o tempo gasto (em meses) para a produção de " + nome + ": ");

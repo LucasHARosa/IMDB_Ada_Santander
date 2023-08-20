@@ -27,6 +27,8 @@ public class FilmeView {
         List<Diretor> diretoresFilme = new ArrayList();
         List<Ator> atoresFilme = new ArrayList();
 
+        List<Ator> adicaoDeAtores = new ArrayList<>();
+
         if (!listaAtores.isEmpty()) {
             System.out.println("Lista de atores cadastrados: ");
             for (Ator ator : listaAtores) {
@@ -34,13 +36,15 @@ public class FilmeView {
             }
 
             System.out.println("Adição de atores ao elenco de " + nome + ": ");
+
             do {
                 ator1 = InputHandler.getIntInput("Digite o código do ator: (Para finalizar, digite -1)\n");
                 if (ator1 != -1) {
                     Ator atorLista = atorService.buscarAtorId(ator1);
                     if (atorLista != null) {
                         if (!atoresFilme.contains(atorLista)) {
-                            atoresFilme.add(atorLista);
+                            //atoresFilme.add(atorLista);
+                            adicaoDeAtores.add(atorLista);
                         } else {
                             System.out.println("Ator já adicionado ao elenco do filme!");
                         }
@@ -82,6 +86,11 @@ public class FilmeView {
 
         Filme filme = new Filme(nome, data, orcamento, descricao, tempoProducao, atoresFilme, diretoresFilme);
         filmeService.cadastrarFilme(filme);
+
+        for (Ator ator:adicaoDeAtores) {
+            filmeService.adicionarAtor(filme, ator);
+        }
+
         if (filmeService.buscarFilme(nome) != null) {
             System.out.println("Cadastro realizado com sucesso!");
         }

@@ -16,6 +16,7 @@ public class FilmeService {
 
     public void adicionarAtor(Filme filme, Ator ator){
         filme.adicionarAtor(ator);
+        ator.addFilme(filme);
         filme.calcularNotaElenco();
     }
 

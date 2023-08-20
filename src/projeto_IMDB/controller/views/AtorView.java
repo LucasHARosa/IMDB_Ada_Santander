@@ -22,6 +22,11 @@ public class AtorView {
 
         System.out.print("Prestígio: ");
         double prestigio = Entrada.getDouble();
+        if(prestigio < 0){
+            prestigio = 0;
+        } else if (prestigio > 10) {
+            prestigio = 10;
+        }
 
         System.out.print("Cache: ");
         double cache = Entrada.getDouble();

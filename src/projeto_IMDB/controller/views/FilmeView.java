@@ -43,7 +43,6 @@ public class FilmeView {
                     Ator atorLista = atorService.buscarAtorId(ator1);
                     if (atorLista != null) {
                         if (!atoresFilme.contains(atorLista)) {
-                            //atoresFilme.add(atorLista);
                             adicaoDeAtores.add(atorLista);
                         } else {
                             System.out.println("Ator já adicionado ao elenco do filme!");
@@ -55,6 +54,7 @@ public class FilmeView {
             } while (ator1 != -1);
         }
 
+        List<Diretor> adicaoDeDiretores = new ArrayList<>();
         if (!listaDiretores.isEmpty()) {
             System.out.println("\nLista de diretores cadastrados: ");
             for (Diretor diretor : listaDiretores) {
@@ -68,7 +68,7 @@ public class FilmeView {
                     Diretor diretorLista = diretorService.buscarDiretorId(diretor1);
                     if (diretorLista != null) {
                         if (!diretoresFilme.contains(diretorLista)) {
-                            diretoresFilme.add(diretorLista);
+                            adicaoDeDiretores.add(diretorLista);
                         } else {
                             System.out.println("Diretor já adicionado ao filme!");
                         }
@@ -89,6 +89,10 @@ public class FilmeView {
 
         for (Ator ator:adicaoDeAtores) {
             filmeService.adicionarAtor(filme, ator);
+        }
+
+        for (Diretor diretor:adicaoDeDiretores) {
+            filmeService.adicionarDiretor(filme, diretor);
         }
 
         if (filmeService.buscarFilme(nome) != null) {

@@ -22,6 +22,7 @@ public class FilmeService {
 
     public void adicionarDiretor(Filme filme, Diretor diretor){
         filme.adicionarDiretor(diretor);
+        diretor.addFilme(filme);
     }
 
     public void cadastrarFilme(Filme filme){

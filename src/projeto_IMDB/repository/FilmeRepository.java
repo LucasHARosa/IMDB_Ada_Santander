@@ -43,14 +43,15 @@ public class FilmeRepository {
         return null;
     }
 
-    public Filme buscarFilme(String nome) {
+    public List<Filme> buscarFilme(String nome) {
+        List<Filme> filmes = new ArrayList<>();
         for (Filme filme : filmeBanco){
-            if (filme.getNome().equalsIgnoreCase(nome)){
-                return filme;
+            if (filme.getNome().toUpperCase().contains(nome.toUpperCase())){
+                filmes.add(filme);
             }
         }
 
-        return null;
+        return filmes;
     }
 
     public boolean buscarAtor(Ator ator, Filme filme) {

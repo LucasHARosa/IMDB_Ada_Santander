@@ -214,9 +214,11 @@ public class FilmeView {
 
     public static void pesquisarFilmePorNome(FilmeService filmeService) {
         String nome = InputHandler.getStringInput("Digite o nome do filme: ");
-        Filme filme = filmeService.buscarFilme(nome);
-        if (filme != null){
-            System.out.println(filme.toString());
+        List<Filme> filmes = filmeService.buscarFilme(nome);
+        if (!filmes.isEmpty()){
+            for (Filme filme:filmes) {
+                System.out.println(filme.toString());
+            }
         }else{
             System.out.println("Nenhum filme cadastrado com esse nome");
         }

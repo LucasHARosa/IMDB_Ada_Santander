@@ -37,7 +37,7 @@ public class FilmeService {
         return filmeRepository.listarFilmes();
     }
 
-    public Filme buscarFilme(String nome){
+    public List<Filme> buscarFilme(String nome){
         return filmeRepository.buscarFilme(nome);
     }
 

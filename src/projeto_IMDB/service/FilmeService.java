@@ -49,6 +49,10 @@ public class FilmeService {
         return filmeRepository.buscarAtor(ator, filme);
     }
 
+    public boolean buscarDiretor(Diretor diretor, Filme filme){
+        return filmeRepository.buscarDiretor(diretor, filme);
+    }
+
     public boolean validarData(String dataLancamento){
         if (dataLancamento.length() < 8 || dataLancamento.length() > 10) {
             return false;

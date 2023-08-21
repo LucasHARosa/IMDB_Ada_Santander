@@ -74,6 +74,6 @@ public abstract class AudioVisual {
     }
 
     //adicionar os metodos de calculo de nota e adicionar atores e diretores
-    protected abstract double calcularNotaElenco();
-    protected abstract double calcularNotaImdb();
+    protected abstract void calcularNotaElenco();
+    protected abstract void calcularNotaImdb();
 }

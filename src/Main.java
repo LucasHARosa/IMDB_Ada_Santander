@@ -34,7 +34,7 @@ public class Main {
         do {
             System.out.println("");
             menuController.menu();
-            opcao = InputHandler.getIntInput("Qual a opção desejada? ");
+            opcao = InputHandler.getIntInput("Qual a opcao desejada? ");
             System.out.println("");
             menuController.operacaoARealizar(opcao);
         } while (opcao != 0);

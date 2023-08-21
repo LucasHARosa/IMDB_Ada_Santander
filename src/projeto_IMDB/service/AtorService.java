@@ -21,7 +21,7 @@ public class AtorService {
         try {
             atorRepository.cadastrarAtor(ator);
         } catch (IllegalArgumentException e){
-            throw new IllegalArgumentException("Informação inválida!");
+            throw new IllegalArgumentException("Informação invalida!");
         }
     }
 

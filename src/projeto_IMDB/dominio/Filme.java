@@ -31,8 +31,6 @@ public class Filme extends AudioVisual {
                 descricao
         );
         this.id = ++contadorFilme;
-        this.notaElenco = calcularNotaElenco();
-        this.notaIMDB = calcularNotaImdb();
         this.tempoProducao = tempoProducao;
         this.atores = atores;
         this.diretores = diretores;
@@ -49,7 +47,7 @@ public class Filme extends AudioVisual {
 
     // TODO media dos prestigios dos atores e diretor
     @Override
-    public double calcularNotaElenco() {
+    public void calcularNotaElenco() {
         double nota;
         double soma = 0.0;
 
@@ -67,14 +65,14 @@ public class Filme extends AudioVisual {
 
         nota = soma / (getAtores().size() + getDiretores().size());
 
-        return nota;
+        setNotaElenco(nota);
     }
     // TODO alguma relação com a nota do elenco e o tempo de produção
     @Override
-    protected double calcularNotaImdb() {
+    protected void calcularNotaImdb() {
         double contribuicaoTempoProducao = calcularContribuicaoTempoProducao(tempoProducao);
 
-        return notaElenco * contribuicaoTempoProducao;
+        setNotaIMDB(notaElenco * contribuicaoTempoProducao);
     }
 
     private double calcularContribuicaoTempoProducao(double tempoDeProducao){
@@ -102,17 +100,18 @@ public class Filme extends AudioVisual {
         }
         StringBuilder result = new StringBuilder("_____________________________\n" +
                 "Nome: " + getNome() +
-                "\nData de lançamento: " + getDataLancamento() +
-                "\nTempo de produção: " + getTempoProducao());
+                "\nData de lancamento: " + getDataLancamento() +
+                "\nTempo de producao: " + getTempoProducao() + " meses"+
+                "\nDescricao: "+ getDescricao());
 
         if (!nomesDiretores.isEmpty()) {
             result.append("\nDiretores: ").append(nomesDiretores);
         }
         if (!nomesAtores.isEmpty()) {
-            result.append("\nAtores: ").append(nomesAtores).append("\nNota do elenco: ").append(getNotaElenco());
+            result.append("\nAtores: ").append(nomesAtores);
         }
-        if (!nomesDiretores.isEmpty()) {
-            result.append("\nNota IMDB: ").append(getNotaIMDB());
+        if (!nomesDiretores.isEmpty() && !nomesAtores.isEmpty() ) {
+            result.append("\nNota do elenco: ").append(getNotaElenco()).append("\nNota IMDB: ").append(getNotaIMDB());
         }
 
         return result.toString();

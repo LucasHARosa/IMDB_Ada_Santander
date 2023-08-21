@@ -27,7 +27,7 @@ public class MenuController {
     }
 
     public void menu(){
-        System.out.println("Menu de operações");
+        System.out.println("Menu de operacoes");
         System.out.println("____________________________________");
         System.out.println( "1) Cadastro de Filmes\n" +
                             "2) Cadastro de atores\n" +

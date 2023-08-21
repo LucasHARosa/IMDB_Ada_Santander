@@ -1,6 +1,7 @@
 package projeto_IMDB.repository;
 
 import projeto_IMDB.dominio.Ator;
+import projeto_IMDB.dominio.Diretor;
 import projeto_IMDB.dominio.Filme;
 
 import java.util.ArrayList;
@@ -54,5 +55,9 @@ public class FilmeRepository {
 
     public boolean buscarAtor(Ator ator, Filme filme) {
         return filme.getAtores().contains(ator);
+    }
+
+    public boolean buscarDiretor(Diretor diretor, Filme filme){
+        return filme.getDiretores().contains(diretor);
     }
 }

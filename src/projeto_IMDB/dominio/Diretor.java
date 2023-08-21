@@ -1,5 +1,8 @@
 package projeto_IMDB.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Diretor  extends Person{
     private String especialidade;
 
@@ -11,30 +14,37 @@ public class Diretor  extends Person{
     public String getEspecialidade() {
         return especialidade;
     }
+
     private String listaFilmes(){
-        String listaDeFilmes = "Lista de filmes que dirigiu:\n";
-        for(Filme filme : getFilmes()){
-            listaDeFilmes += filme.toString() +"\n";
+
+        if(getFilmes().size() != 0){
+            List<String> nomesFilmes = new ArrayList<>();;
+
+            for(Filme filme : getFilmes()){
+                nomesFilmes.add(filme.getNome());
+            }
+
+            return nomesFilmes.toString();
         }
-        return listaDeFilmes;
+        return "Não participou de nenhum filme!";
     }
 
     @Override
     public String toString() {
         return
-            "_____________________________\n"+
             "Nome: "+getNome() +
             ", Sexo: " + getSexo()  +
             ", Anos De Carreira: " + getAnosDeCarreira() +
-            ", Especialidade: "+especialidade+
+            ", Especialidade: "+ especialidade+
             ", Prestigio (0-10): " + getPrestigio() + "\n"+
-            listaFilmes()
+            listaFilmes()+
+            "\n"
             ;
     }
 
     public String infoBasica(){
         return
-            "_____________________________\n"+
+            "--\n"+
             "Nome: "+getNome() +
             ", Sexo: " + getSexo()  +
             ", Anos De Carreira: " + getAnosDeCarreira() +

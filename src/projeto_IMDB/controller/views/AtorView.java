@@ -20,7 +20,7 @@ public class AtorView {
         System.out.print("Anos de Carreira: ");
         int anosCarreira = Entrada.getInt();
 
-        System.out.print("Prestígio: ");
+        System.out.print("Prestigio (0-10): ");
         double prestigio = Entrada.getDouble();
         if(prestigio < 0){
             prestigio = 0;
@@ -28,7 +28,7 @@ public class AtorView {
             prestigio = 10;
         }
 
-        System.out.print("Cache: ");
+        System.out.print("Cache: R$ ");
         double cache = Entrada.getDouble();
 
         Ator atorNovo = new Ator(nome, sexo, anosCarreira, prestigio, cache);
@@ -41,6 +41,7 @@ public class AtorView {
         if (atorService.listarAtores().equals(null) || atorService.listarAtores().isEmpty()){
             System.out.println("Nenhum ator cadastrado!");
         } else {
+            System.out.println("Atores cadastrados no sistema: \n");
             for (Ator ator:atorService.listarAtores()) {
                 System.out.println(ator);
             }

@@ -1,5 +1,8 @@
 package projeto_IMDB.dominio;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ator extends Person {
     private double cache;
 
@@ -13,23 +16,30 @@ public class Ator extends Person {
     }
 
     private String listaFilmes(){
-        String listaDeFilmes = "Lista de filmes que participou:\n";
-        for(Filme filme : getFilmes()){
-            listaDeFilmes += filme.toString() +"\n";
+        if(getFilmes().size() != 0){
+            List<String> nomesFilmes = new ArrayList<>();;
+
+            for(Filme filme : getFilmes()){
+                nomesFilmes.add(filme.getNome());
+            }
+
+            return nomesFilmes.toString();
         }
-        return listaDeFilmes;
+        return "Não participou de nenhum filme!";
+
+
     }
 
     @Override
     public String toString(){
         return
-            "_____________________________\n"+
             "Nome: "+getNome() +
             ", Sexo: " + getSexo()  +
             ", Anos De Carreira: " + getAnosDeCarreira() +
             ", Cache: R$"+cache+
             ", Prestigio (0-10): " + getPrestigio() + "\n"+
-            listaFilmes()
+            listaFilmes()+
+            "\n"
             ;
     }
 

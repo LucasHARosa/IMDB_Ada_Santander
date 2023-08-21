@@ -36,9 +36,10 @@ public class MenuController {
                             "5) Listar Atores\n" +
                             "6) Listar Diretores\n" +
                             "7) Adicionar um ator ao filme\n" +
-                            "8) Adicionar um filme ao ator\n" +
-                            "9) Adicionar um filme ao diretor\n" +
-                           "10) Pesquisar filme pelo nome\n" +
+                            "8) Adicionar um diretor ao filme\n" +
+                            "9) Adicionar um filme ao ator\n" +
+                            "10) Adicionar um filme ao diretor\n" +
+                            "11) Pesquisar filme pelo nome\n" +
                             "0) Encerrar aplicativo");
         System.out.println("____________________________________");
     }
@@ -69,14 +70,17 @@ public class MenuController {
                 FilmeView.adicionarAtorAoFilme(atorService, filmeService);
                 break;
             case 8:
+                FilmeView.adicionarDiretorEmFilme(diretorService,filmeService);
+                break;
+            case 9:
                 //adicionarAtorEmFilme();
                 AtorView.adicionarFilmeAoAtor(atorService, filmeService);
                 break;
-            case 9:
+            case 10:
                 //adicionarDiretorEmFilme();
                 DiretorView.adicionarFilmeAoDiretor(diretorService, filmeService);
                 break;
-            case 10:
+            case 11:
                 FilmeView.pesquisarFilmePorNome(filmeService);
                 break;
             case 0:

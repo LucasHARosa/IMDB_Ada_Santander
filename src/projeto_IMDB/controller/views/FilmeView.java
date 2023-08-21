@@ -20,6 +20,10 @@ public class FilmeView {
 
         String nome = InputHandler.getStringInput("Digite o nome do filme: ");
         String data = InputHandler.getStringInput("Digite a data de lancamento de " + nome + ": ");
+        double orcamento = InputHandler.getDoubleInput("Digite o orcamento gasto para a producao de " + nome + ": R$ ");
+        int tempoProducao = InputHandler.getIntInput("Digite o tempo gasto (em meses) para a producao de " + nome + ": ");
+        String descricao = InputHandler.getStringInput("Digite a descricao de " + nome + ": ");
+
 
         List<Ator> listaAtores = atorService.listarAtores();
         List<Diretor> listaDiretores = diretorService.listarDiretores();
@@ -32,15 +36,14 @@ public class FilmeView {
 
 
         if (!listaAtores.isEmpty()) {
-            System.out.println("Lista de atores cadastrados: ");
+            System.out.println("\nLista de Atores: ");
+            System.out.println("0) Finalizar");
             for (Ator ator : listaAtores) {
                 System.out.println(ator.getId() + ") " + ator.getNome());
             }
 
-            System.out.println("Adicaoo de atores ao elenco de " + nome + ": ");
-
             do {
-                ator1 = InputHandler.getIntInput("Digite o código do ator: (Para finalizar, digite 0)\n");
+                ator1 = InputHandler.getIntInput("Digite sua escolha:\n");
                 if (ator1 != 0) {
                     Ator atorLista = atorService.buscarAtorId(ator1);
                     if (atorLista != null) {
@@ -58,14 +61,15 @@ public class FilmeView {
 
         List<Diretor> adicaoDeDiretores = new ArrayList<>();
         if (!listaDiretores.isEmpty()) {
-            System.out.println("\nLista de diretores cadastrados: ");
+            System.out.println("\nLista de diretores: ");
+            System.out.println("0) Finalizar");
             for (Diretor diretor : listaDiretores) {
                 System.out.println(diretor.getId() + ") " + diretor.getNome());
             }
 
-            System.out.println("\nAdicao de diretores de " + nome + ": ");
+
             do {
-                diretor1 = InputHandler.getIntInput("Digite o codigo do diretor: (Para finalizar, digite 0)\n");
+                diretor1 = InputHandler.getIntInput("Digite sua escolha:\n");
                 if (diretor1 != 0) {
                     Diretor diretorLista = diretorService.buscarDiretorId(diretor1);
                     if (diretorLista != null) {
@@ -81,9 +85,7 @@ public class FilmeView {
             } while (diretor1 != 0);
         }
 
-        double orcamento = InputHandler.getDoubleInput("Digite o orcamento gasto para a producao de " + nome + ": ");
-        int tempoProducao = InputHandler.getIntInput("Digite o tempo gasto (em meses) para a producao de " + nome + ": ");
-        String descricao = InputHandler.getStringInput("Digite a descricao de " + nome + ": ");
+
 
 
         Filme filme = new Filme(nome, data, orcamento, descricao, tempoProducao, atoresFilme, diretoresFilme);
@@ -163,7 +165,7 @@ public class FilmeView {
 
     }
 
- public void adicionarDiretorEmFilme(DiretorService diretorService, FilmeService filmeService) {
+ public static void adicionarDiretorEmFilme(DiretorService diretorService, FilmeService filmeService) {
         try{
             if(diretorService.listarDiretores().isEmpty()){
                 throw new ListaVaziaException("Por favor cadastre diretores, a lista de diretores esta vazia");
@@ -181,7 +183,7 @@ public class FilmeView {
             Filme filme = filmeService.buscarFilmeId(filmeId);
 
 
-            System.out.println("Lista de Atores: ");
+            System.out.println("Lista de Diretores: ");
             for (Diretor diretor : diretorService.listarDiretores()) {
                 System.out.println(diretor.getId() + ") " + diretor.getNome());
             }

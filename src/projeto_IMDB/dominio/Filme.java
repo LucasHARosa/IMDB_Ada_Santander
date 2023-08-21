@@ -36,6 +36,12 @@ public class Filme extends AudioVisual {
         this.diretores = diretores;
     }
 
+    public Filme(String nome, String dataLancamento, double orcamento, String descricao, double tempoProducao) {
+        super(nome, dataLancamento, orcamento, descricao);
+        this.id = ++contadorFilme;
+        this.tempoProducao = tempoProducao;
+    }
+
     public void adicionarAtor(Ator ator) {
         getAtores().add(ator);
         calcularNotaElenco();
@@ -66,6 +72,7 @@ public class Filme extends AudioVisual {
         nota = soma / (getAtores().size() + getDiretores().size());
 
         setNotaElenco(nota);
+        calcularNotaImdb();
     }
     // TODO alguma relação com a nota do elenco e o tempo de produção
     @Override
@@ -153,4 +160,5 @@ public class Filme extends AudioVisual {
     public List<Diretor> getDiretores() {
         return diretores;
     }
+
 }

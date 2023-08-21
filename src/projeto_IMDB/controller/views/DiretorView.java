@@ -20,7 +20,7 @@ public class DiretorView {
         System.out.print("Anos de Carreira: ");
         int anosCarreira = Entrada.getInt();
 
-        System.out.print("Prestígio: ");
+        System.out.print("Prestigio (0-10): ");
         double prestigio = Entrada.getDouble();
         if(prestigio < 0){
             prestigio = 0;
@@ -41,9 +41,11 @@ public class DiretorView {
         if (diretorService.listarDiretores().isEmpty() || diretorService.listarDiretores().equals(null)){
             System.out.println("Nenhum diretor cadastrado!");
         } else {
+            System.out.println("Diretores cadastrados no sistema: \n");
             for (Diretor diretor:diretorService.listarDiretores()) {
                 System.out.println(diretor);
             }
+
         }
     }
 
